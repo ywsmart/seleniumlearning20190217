@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+  <reporter-output>
+    <line>
+      <![CDATA[搜索关键词-selenium]]>
+    </line>
+    <line>
+      <![CDATA[搜索关键词-testng]]>
+    </line>
+  </reporter-output>
+  <suite name="Default Suite" duration-ms="23446" started-at="2019-02-17T08:20:03Z" finished-at="2019-02-17T08:20:27Z">
+    <groups>
+    </groups>
+    <test name="seleniumlearning20190217" duration-ms="23446" started-at="2019-02-17T08:20:03Z" finished-at="2019-02-17T08:20:27Z">
+      <class name="com.yvan.SearchKeywordParameter">
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.yvan.SearchKeywordParameter@7c30a502]" name="setup" is-config="true" duration-ms="4347" started-at="2019-02-17T08:20:03Z" finished-at="2019-02-17T08:20:07Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="test(java.lang.String)[pri:0, instance:com.yvan.SearchKeywordParameter@7c30a502]" name="test" duration-ms="5111" started-at="2019-02-17T08:20:07Z" data-provider="getData" finished-at="2019-02-17T08:20:13Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[selenium]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[搜索关键词-selenium]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- test -->
+        <test-method status="PASS" signature="teardown()[pri:0, instance:com.yvan.SearchKeywordParameter@7c30a502]" name="teardown" is-config="true" duration-ms="863" started-at="2019-02-17T08:20:13Z" finished-at="2019-02-17T08:20:13Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.yvan.SearchKeywordParameter@7c30a502]" name="setup" is-config="true" duration-ms="2499" started-at="2019-02-17T08:20:13Z" finished-at="2019-02-17T08:20:16Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="test(java.lang.String)[pri:0, instance:com.yvan.SearchKeywordParameter@7c30a502]" name="test" duration-ms="9775" started-at="2019-02-17T08:20:16Z" data-provider="getData" finished-at="2019-02-17T08:20:26Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[testng]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[搜索关键词-testng]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- test -->
+        <test-method status="PASS" signature="teardown()[pri:0, instance:com.yvan.SearchKeywordParameter@7c30a502]" name="teardown" is-config="true" duration-ms="813" started-at="2019-02-17T08:20:26Z" finished-at="2019-02-17T08:20:27Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- com.yvan.SearchKeywordParameter -->
+    </test> <!-- seleniumlearning20190217 -->
+  </suite> <!-- Default Suite -->
+</testng-results>
