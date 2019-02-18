@@ -6,7 +6,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * Function：
@@ -17,11 +21,18 @@ import org.testng.Reporter;
  */
 public class NavBarPage {
     WebDriver driver;
+
+    //搜索输入框
     @FindBy(tagName = "input")
     WebElement searchWebElement;
 
+    // 社团按钮
+    @FindBy(css = "a[href='/teams']")
+    WebElement teamsButton;
+
     public NavBarPage(WebDriver driver){
         this.driver = driver;
+        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
         PageFactory.initElements(driver,this);
     }
 
@@ -37,5 +48,10 @@ public class NavBarPage {
         Actions action =new Actions(driver);
         action.sendKeys(Keys.ENTER).perform();
         return new SearchResultPage(driver);
+    }
+
+    public TeamsPage gotoTeamsPage(){
+        teamsButton.click();
+        return new TeamsPage(driver);
     }
 }
