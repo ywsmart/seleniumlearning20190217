@@ -18,12 +18,17 @@ import org.testng.Reporter;
 public class NavBarPage {
     WebDriver driver;
 
-    //搜索输入框
+    /**
+     * 搜索输入框
+     */
     @FindBy(tagName = "input")
+    private
     WebElement searchWebElement;
-
-    // 社团按钮
+    /**
+     * 社团按钮
+     */
     @FindBy(css = "a[href='/teams']")
+    private
     WebElement teamsButton;
 
     public NavBarPage(WebDriver driver){
