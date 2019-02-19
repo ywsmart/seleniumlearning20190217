@@ -6,14 +6,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 
-import java.util.concurrent.TimeUnit;
-
 /**
- * Function：
+ * Function：导航PO类
  *
  * @author yawa1hz1
  * @date 2019/2/17
@@ -32,7 +28,6 @@ public class NavBarPage {
 
     public NavBarPage(WebDriver driver){
         this.driver = driver;
-        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
         PageFactory.initElements(driver,this);
     }
 
@@ -52,6 +47,7 @@ public class NavBarPage {
 
     public TeamsPage gotoTeamsPage(){
         teamsButton.click();
+        System.out.println("点击社团");
         return new TeamsPage(driver);
     }
 }
