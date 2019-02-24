@@ -33,7 +33,7 @@ public class GotoTeam {
         // 设置最大化参数
         options.addArguments("--start-maximized");
         driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+//        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
     }
 
     @Test
@@ -45,10 +45,10 @@ public class GotoTeam {
         TeamsPage teamsPage = homePage.gotoTeamsPage();
         // 3、点击霍格沃兹测试学院
         teamsPage.clickHogwartsTeam();
-        Thread.sleep(2000);
+//        Thread.sleep(2000);
         // 4、点击话题列表中的第一个
         teamsPage.clickFirstTopics();
-        Thread.sleep(2000);
+//        Thread.sleep(2000);
         String value = "\"期待的标题不包含\"+value+\"实际为\"+actualMsg";
         // 5、验证 访问被拒绝 字符串出现
         Assert.assertTrue(driver.getPageSource().contains("访问被拒绝，你可能没有权限或未登录。"), "期待的提示不包含" + value);

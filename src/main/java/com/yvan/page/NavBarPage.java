@@ -6,7 +6,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Function：导航PO类
@@ -17,6 +21,7 @@ import org.testng.Reporter;
  */
 public class NavBarPage {
     WebDriver driver;
+    WebDriverWait wait;
 
     /**
      * 搜索输入框
@@ -31,9 +36,13 @@ public class NavBarPage {
     private
     WebElement teamsButton;
 
-    public NavBarPage(WebDriver driver){
+    @FindBy(css = "#main-nav-menu .nav li")
+    List<WebElement> navList;
+
+    public NavBarPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        this.wait = new WebDriverWait(driver, 5);
+        PageFactory.initElements(driver, this);
     }
 
     public void searchKeyWord(String value) {
@@ -42,15 +51,26 @@ public class NavBarPage {
         Reporter.log("搜索关键词-" + value, true);
     }
 
-    public SearchResultPage gotoSearchResult(String value){
+    public SearchResultPage gotoSearchResult(String value) {
         searchKeyWord(value);
         // 执行键盘回车
-        Actions action =new Actions(driver);
+        Actions action = new Actions(driver);
         action.sendKeys(Keys.ENTER).perform();
         return new SearchResultPage(driver);
     }
 
-    public TeamsPage gotoTeamsPage(){
+    // 去菜单
+    public boolean clickNavByTest(String menu) {
+        for (WebElement e : navList) {
+            if (e.getText().trim().equalsIgnoreCase(menu)) {
+                e.click();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public TeamsPage gotoTeamsPage() {
         teamsButton.click();
         System.out.println("点击社团");
         return new TeamsPage(driver);

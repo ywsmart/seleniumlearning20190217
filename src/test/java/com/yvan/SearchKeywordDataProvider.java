@@ -2,6 +2,7 @@ package com.yvan;
 
 import com.yvan.page.HomePage;
 import com.yvan.page.SearchResultPage;
+import com.yvan.utils.FileUtils;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.openqa.selenium.WebDriver;
@@ -28,22 +29,24 @@ import java.util.List;
  */
 public class SearchKeywordDataProvider {
     WebDriver driver = null;
+    String url = "";
 
     @BeforeMethod
-    private void setup() {
+    private void setup() throws Exception {
         ChromeOptions options = new ChromeOptions();
 //        options.setHeadless(true);
         // 设置最大化参数
         options.addArguments("--start-maximized");
         driver = new ChromeDriver(options);
 //        driver.manage().window().maximize();
+        url = FileUtils.readYmlFile(FileUtils.getPath("/config.yml"), "url");
     }
 
     @DataProvider
     public Iterator<Object[]> getData() throws Exception {
         String filePath = SearchKeywordDataProvider.class.getResource("/2.csv").getPath();
         System.out.println(filePath);
-        return readCsvFille(filePath);
+        return FileUtils.readCsvFile(filePath);
     }
 
     @Test(dataProvider = "getData")
@@ -52,24 +55,6 @@ public class SearchKeywordDataProvider {
         HomePage homePage = new HomePage(driver);
         SearchResultPage searchResultPage = homePage.gotoSearchResult(value);
     }
-
-    public Iterator<Object[]> readCsvFille(String filePath) throws IOException {
-        List<Object[]> dataArray = new ArrayList<>();
-        Reader in = new FileReader(filePath);
-        Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(in);
-        for (CSVRecord record: records){
-            List<Object> rowList = new ArrayList<>();
-            Iterator i = record.iterator();
-            while (i.hasNext()){
-                rowList.add(i.next());
-            }
-            System.err.println(rowList);
-            Object[] rowArray = rowList.toArray();
-            dataArray.add(rowArray);
-        }
-        return dataArray.iterator();
-    }
-
 
     @AfterMethod
     private void teardown() {

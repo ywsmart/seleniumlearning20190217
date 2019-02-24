@@ -3,6 +3,10 @@ package com.yvan.page;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * Function：
@@ -26,6 +30,8 @@ public class TeamsPage extends NavBarPage {
 
     public TeamsPage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver,this);
+        wait.until(ExpectedConditions.titleContains("社团"));
     }
 
     public TeamsPage clickHogwartsTeam() {

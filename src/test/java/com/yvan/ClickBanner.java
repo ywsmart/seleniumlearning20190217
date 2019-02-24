@@ -2,6 +2,8 @@ package com.yvan;
 
 import com.yvan.page.EventPage;
 import com.yvan.page.HomePage;
+import com.yvan.utils.FileUtils;
+import com.yvan.utils.SeleniumUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,6 +13,8 @@ import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.util.Set;
 
 /**
  * Function：
@@ -29,24 +33,18 @@ public class ClickBanner {
     }
 
     @Test
-    private void test() throws InterruptedException {
+    private void clickBannerTest() throws Exception {
         driver.get("https://testerhome.com");
-        HomePage homePage = new HomePage(driver);
-        String handle1 = driver.getWindowHandle();
-        Reporter.log("原窗口"+handle1,true);
-        homePage.clickBanner();
-        WebDriverWait wait = new WebDriverWait(driver,5);
-        wait.until(ExpectedConditions.numberOfWindowsToBe(2));
-        for (String handle:driver.getWindowHandles()){
-            if (!handle.equalsIgnoreCase(handle1)){
-                driver.switchTo().window(handle);
-                Reporter.log("切换到窗口"+handle,true);
-            }
-        }
-        String expectTitle = "大会";
-//        String actualTitle = new EventPage(driver).getPageTitle();
-//        Assert.assertTrue(actualTitle.contains(expectTitle),"期待网页标题包含"+expectTitle+"实际的标题是"+actualTitle);
-        wait.until(ExpectedConditions.titleContains(expectTitle));
+
+//        HomePage homePage = new HomePage(driver);
+//        EventPage eventPage =homePage.clickBannerAndReturnPage();
+//        String expectTitle = "大会";
+//        eventPage.waitTitleContains(5,expectTitle);
+
+//        String expectTitle = "大会";
+        String expectTitle = FileUtils.readYmlFile(FileUtils.getPath("/clickBanner.yml"),"expectTitle");
+        // 简单的写
+        new HomePage(driver).clickBannerAndReturnPage().waitTitleContains(5,expectTitle);
         Thread.sleep(2000);
     }
 

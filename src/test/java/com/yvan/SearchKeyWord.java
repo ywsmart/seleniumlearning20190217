@@ -11,6 +11,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Function：
  *
@@ -33,16 +36,22 @@ public class SearchKeyWord {
     }
 
     @Test
-    private void test() throws InterruptedException {
+    private void searchTest() throws InterruptedException {
         driver.get("https://testerhome.com");
         String value = "selenium";
         HomePage homePage = new HomePage(driver);
         SearchResultPage searchResultPage = homePage.gotoSearchResult(value);
-        String actualMsg;
-        for (WebElement topic : searchResultPage.returnTopics()) {
-            actualMsg = topic.getText().trim();
-            Assert.assertTrue(actualMsg.toLowerCase().contains(value.toLowerCase()),"期待的标题不包含"+value+"实际为"+actualMsg);
+        String keyword = "selenium";
+        int i = 0;
+        List<String> assertMsg = new ArrayList<>();
+        for (String topic : searchResultPage.returnTopicsTitle()) {
+            System.err.println("正在校验"+i+++ "条数据");
+            if (!topic.contains(keyword)){
+                assertMsg.add("期待的标题不包含" + value + "实际为" + topic);
+            }
         }
+        if (assertMsg.isEmpty())
+        Assert.assertTrue(false, assertMsg.toString());
         Thread.sleep(2000);
     }
 
