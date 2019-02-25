@@ -1,6 +1,7 @@
 package com.yvan;
 
 import com.yvan.page.HomePage;
+import com.yvan.page.SignInPage;
 import com.yvan.page.TeamsPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -45,13 +46,14 @@ public class GotoTeam {
         TeamsPage teamsPage = homePage.gotoTeamsPage();
         // 3、点击霍格沃兹测试学院
         teamsPage.clickHogwartsTeam();
-//        Thread.sleep(2000);
         // 4、点击话题列表中的第一个
         teamsPage.clickFirstTopics();
-//        Thread.sleep(2000);
-        String value = "\"期待的标题不包含\"+value+\"实际为\"+actualMsg";
         // 5、验证 访问被拒绝 字符串出现
-        Assert.assertTrue(driver.getPageSource().contains("访问被拒绝，你可能没有权限或未登录。"), "期待的提示不包含" + value);
+//        String value = "\"期待的标题不包含\"+value+\"实际为\"+actualMsg";
+//        整个页面源码包含的验证方式不合适Assert.assertTrue(driver.getPageSource().contains("访问被拒绝，你可能没有权限或未登录。"), "期待的提示不包含" + value);
+        SignInPage signInPage = new SignInPage(driver);
+        String alert = signInPage.getAlertMsg();
+        Assert.assertTrue(alert.contains("权限"),"期望信息包含，实际信息是" + alert);
     }
 
     @AfterMethod

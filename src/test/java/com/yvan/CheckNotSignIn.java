@@ -26,7 +26,7 @@ public class CheckNotSignIn {
     public void notSIngnInTest() throws Exception{
         driver.get(FileUtils.readYmlFile(FileUtils.getPath("/config.yml"),"url"));
         HomePage homePage = new HomePage(driver);
-        homePage.clickNavByTest(FileUtils.readYmlFile(FileUtils.getPath("/notSignIn.yml"),"menu"));
+        homePage.clickNavByText(FileUtils.readYmlFile(FileUtils.getPath("/notSignIn.yml"),"menu"));
     }
 
 }

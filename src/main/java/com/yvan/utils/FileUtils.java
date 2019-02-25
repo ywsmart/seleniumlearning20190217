@@ -21,6 +21,12 @@ import java.util.Map;
  * Created by yawa1hz1 on 2019/2/24 10:28.
  */
 public class FileUtils {
+    /**
+     * 读取CSV文件
+     * @param filePath
+     * @return
+     * @throws Exception
+     */
     public static Iterator<Object[]> readCsvFile(String filePath) throws Exception {
         List<Object[]> dataArray = new ArrayList<>();
         Reader in = new FileReader(filePath);
@@ -37,6 +43,13 @@ public class FileUtils {
         return dataArray.iterator();
     }
 
+    /**
+     * 读取Yml文件
+     * @param path
+     * @param attribute
+     * @return
+     * @throws Exception
+     */
     public static String readYmlFile(String path, String attribute) throws Exception {
         Yaml yaml = new Yaml();
         FileInputStream fileInputStream = new FileInputStream(path);

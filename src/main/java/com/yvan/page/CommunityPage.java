@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.List;
 
 /**
- * Function：
+ * Function：社区页
  *
  * @author yawa1hz1
  * @date 2019/2/24
@@ -23,7 +23,7 @@ public class CommunityPage extends NavBarPage {
     public CommunityPage(WebDriver driver){
         super(driver);
         PageFactory.initElements(driver,this);
-//        wait.until(ExpectedConditions.titleContains("社团"));
+        wait.until(ExpectedConditions.titleContains("社团"));
     }
 
     public boolean clickCommunityByText(String communityName){
@@ -34,6 +34,15 @@ public class CommunityPage extends NavBarPage {
             }
         }
         return false;
+    }
+    public void clickTeam(String menu){
+        for(WebElement menuElement:communityList){
+            if(menuElement.getText().equals(menu)){
+                menuElement.click();
+                System.err.println("点击了" + menu);
+                break;
+            }
+        }
     }
 
 }

@@ -51,7 +51,7 @@ public class SearchKeywordDataProvider {
 
     @Test(dataProvider = "getData")
     public void test(String value) throws Exception {
-        driver.get("https://testerhome.com");
+        driver.get(url);
         HomePage homePage = new HomePage(driver);
         SearchResultPage searchResultPage = homePage.gotoSearchResult(value);
     }

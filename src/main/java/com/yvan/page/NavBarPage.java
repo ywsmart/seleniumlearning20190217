@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 
@@ -22,6 +23,7 @@ import java.util.concurrent.TimeUnit;
 public class NavBarPage {
     WebDriver driver;
     WebDriverWait wait;
+    long time = 30;
 
     /**
      * 搜索输入框
@@ -41,7 +43,7 @@ public class NavBarPage {
 
     public NavBarPage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, 5);
+        this.wait = new WebDriverWait(driver, time);
         PageFactory.initElements(driver, this);
     }
 
@@ -60,7 +62,7 @@ public class NavBarPage {
     }
 
     // 去菜单
-    public boolean clickNavByTest(String menu) {
+    public boolean clickNavByText(String menu) {
         for (WebElement e : navList) {
             if (e.getText().trim().equalsIgnoreCase(menu)) {
                 e.click();
@@ -73,6 +75,8 @@ public class NavBarPage {
     public TeamsPage gotoTeamsPage() {
         teamsButton.click();
         System.out.println("点击社团");
+        wait.until(ExpectedConditions.titleContains("社团"));
         return new TeamsPage(driver);
     }
+
 }
