@@ -21,14 +21,14 @@ public class HogwartsPage {
     @FindBy(css = ".media-body .media-heading a")
     List<WebElement> topicsElement;
 
-    public HogwartsPage(WebDriver driver){
-        PageFactory.initElements(driver,this);
-        new WebDriverWait(driver,30).until(ExpectedConditions.titleIs("TesterHome"));
+    public HogwartsPage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+        new WebDriverWait(driver, 30).until(ExpectedConditions.titleIs("TesterHome"));
     }
 
-    public void clickFirstTopic(){
-        Reporter.log("一共 " + topicsElement.size(),true);
+    public void clickFirstTopic() {
+        Reporter.log("一共 " + topicsElement.size(), true);
         topicsElement.get(0).click();
-        Reporter.log("点击了第一个标题",true);
+        Reporter.log("点击了第一个标题", true);
     }
 }

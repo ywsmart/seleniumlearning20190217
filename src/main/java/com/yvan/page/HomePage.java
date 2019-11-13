@@ -22,20 +22,20 @@ public class HomePage extends NavBarPage {
 
     public HomePage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
     public void clickBanner() {
         banner.click();
-        Reporter.log("点击图片",true);
+        Reporter.log("点击图片", true);
     }
 
-    public EventPage clickBannerAndReturnPage(){
+    public EventPage clickBannerAndReturnPage() {
         String handle1 = driver.getWindowHandle();
         Set<String> handes = driver.getWindowHandles();
-        Reporter.log("原窗口是"+handle1,true);
+        Reporter.log("原窗口是" + handle1, true);
         clickBanner();
-        SeleniumUtils.switchWindow(driver,5,handes);
+        SeleniumUtils.switchWindow(driver, 5, handes);
         return new EventPage(driver);
     }
 }

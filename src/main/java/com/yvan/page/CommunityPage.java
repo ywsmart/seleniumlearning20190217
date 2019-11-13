@@ -17,27 +17,29 @@ import java.util.List;
  */
 public class CommunityPage extends NavBarPage {
     @FindBy(css = "#hot_teams .panel-body .media-heading a")
-    List<WebElement> communityList;
+     List<WebElement> communityList;
 
     WebDriver driver;
-    public CommunityPage(WebDriver driver){
+
+    public CommunityPage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
         wait.until(ExpectedConditions.titleContains("社团"));
     }
 
-    public boolean clickCommunityByText(String communityName){
+    public boolean clickCommunityByText(String communityName) {
         for (WebElement e :
                 communityList) {
-            if (e.getText().trim().equalsIgnoreCase(communityName)){
+            if (e.getText().trim().equalsIgnoreCase(communityName)) {
                 e.click();
             }
         }
         return false;
     }
-    public void clickTeam(String menu){
-        for(WebElement menuElement:communityList){
-            if(menuElement.getText().equals(menu)){
+
+    public void clickTeam(String menu) {
+        for (WebElement menuElement : communityList) {
+            if (menuElement.getText().equals(menu)) {
                 menuElement.click();
                 System.err.println("点击了" + menu);
                 break;

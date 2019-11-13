@@ -20,11 +20,12 @@ public class EventPage {
         PageFactory.initElements(driver, this);
     }
 
-    public String getPageTitle(){
+    public String getPageTitle() {
         return driver.getTitle();
     }
-    public void waitTitleContains(long time,String partTitle){
-        WebDriverWait wait = new WebDriverWait(driver,time);
+
+    public void waitTitleContains(long time, String partTitle) {
+        WebDriverWait wait = new WebDriverWait(driver, time);
         wait.until(ExpectedConditions.titleContains(partTitle));
     }
 }

@@ -16,16 +16,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 public class SignInPage {
     WebDriverWait wait;
-    @FindBy(css=".alert")
+    @FindBy(css = ".alert")
     WebElement alertMsg;
 
-    public SignInPage(WebDriver driver){
+    public SignInPage(WebDriver driver) {
         wait = new WebDriverWait(driver, 30);
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
         wait.until(ExpectedConditions.titleContains("登录"));
     }
 
-    public String getAlertMsg(){
+    public String getAlertMsg() {
         return alertMsg.getText().trim();
     }
 }

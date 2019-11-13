@@ -33,7 +33,7 @@ public class TeamsPage extends NavBarPage {
 
     public TeamsPage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
 //        wait.until(ExpectedConditions.titleContains("社团"));
     }
 
